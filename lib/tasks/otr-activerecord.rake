@@ -55,22 +55,15 @@ namespace :db do
     end
   end
 
-  desc "Create a migration (parameters: NAME, VERSION)"
-  task :create_migration do
-    unless ENV["NAME"]
-      puts "No NAME specified. Example usage: `rake db:create_migration NAME=create_widgets`"
-      exit 1
-    end
-
-    name = ENV["NAME"]
-    version = ENV["VERSION"] || Time.now.utc.strftime("%Y%m%d%H%M%S")
+  desc "Create a migration"
+  task :create_migration, [:name] do |_, args|
+    name, version = args[:name], Time.now.utc.strftime("%Y%m%d%H%M%S")
 
     OTR::ActiveRecord._normalizer.migrations_paths.each do |directory|
       next unless File.exists?(directory)
       migration_files = Pathname(directory).children
       if duplicate = migration_files.find { |path| path.basename.to_s.include?(name) }
-        puts "Another migration is already named \"#{name}\": #{duplicate}."
-        exit 1
+        abort "Another migration is already named \"#{name}\": #{duplicate}."
       end
     end
 

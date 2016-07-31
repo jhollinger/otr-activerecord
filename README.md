@@ -44,7 +44,7 @@ This will give you most of the standard `db:` tasks you get in Rails. Add it to 
 
 Unlike in Rails, creating a new migration is also a rake task. Run `bundle exec rake -T` to get a full list of tasks.
 
-    bundle exec rake db:create_migration NAME=create_widgets
+    bundle exec rake db:create_migration[create_widgets]
 
 ## Examples
 
