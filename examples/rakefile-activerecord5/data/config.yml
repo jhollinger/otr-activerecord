@@ -1,0 +1,20 @@
+development:
+  adapter: sqlite3
+  encoding: utf8
+  database: data/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  encoding: utf8
+  database: data/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: sqlite3
+  encoding: utf8
+  database: data/production.sqlite3
+  pool: 5
+  timeout: 5000
