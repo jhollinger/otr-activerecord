@@ -1,0 +1,7 @@
+require 'active_record'
+require 'hashie-forbidden_attributes'
+require 'otr-activerecord/version'
+require 'otr-activerecord/activerecord'
+require 'otr-activerecord/compatibility_4'
+require 'otr-activerecord/compatibility_5'
+require 'otr-activerecord/defaults'
