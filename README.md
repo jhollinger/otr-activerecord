@@ -48,7 +48,7 @@ Unlike in Rails, creating a new migration is also a rake task. Run `bundle exec 
 
 ## Examples
 
-Look under /examples for some example apps.
+Look under [/examples](https://github.com/jhollinger/otr-activerecord/tree/master/examples) for some example apps.
 
 ## Advanced options
 
