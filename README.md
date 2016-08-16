@@ -27,6 +27,8 @@ This is because in ActiveRecord when that env variable is set it will merge its 
 This ActiveRecord middleware cleans up your database connections after each request. Add it to your `config.ru` file:
 
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
+    
+NOTE: **This middleware is not available in ActiveRecord 5**, and it's still unclear if something similar is needed. If you start seeing "unable to obtain a database connection" errors in AR 5, errors open an issue and we'll investigate.
 
 #### 4. Import ActiveRecord tasks into your Rakefile
 
