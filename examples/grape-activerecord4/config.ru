@@ -1,6 +1,6 @@
 require './config/application'
 
-use ActiveRecord::ConnectionAdapters::ConnectionManagement
+use OTR::ActiveRecord::ConnectionManagement
 
 run Rack::Cascade.new([
   Routes::V1::API,

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'activerecord', '~> 5.0.0', require: 'active_record'
-gem 'otr-activerecord', path: '/home/jhollinger/devel/otr-activerecord'
+gem 'otr-activerecord', '~> 1.1.0'
 gem 'sqlite3'
 gem 'rake'
