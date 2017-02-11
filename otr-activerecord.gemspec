@@ -4,7 +4,7 @@ require File.expand_path('../lib/otr-activerecord/version.rb', __FILE__)
 Gem::Specification.new do |gem|
   gem.name = 'otr-activerecord'
   gem.version = OTR::ActiveRecord::VERSION
-  gem.date = '2016-08-24'
+  gem.date = '2017-02-11'
 
   gem.description = 'Off The Rails ActiveRecord: Use ActiveRecord with Grape, Sinatra, Rack, or anything else! Formerly known as \'grape-activerecord\'.'
   gem.summary = 'Off The Rails: Use ActiveRecord with Grape, Sinatra, Rack, or anything else!'
