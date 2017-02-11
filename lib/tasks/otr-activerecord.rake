@@ -53,7 +53,7 @@ namespace :db do
     task :environment do
       ENV['RACK_ENV'] = 'test'
     end
-  end
+  end if OTR::ActiveRecord._normalizer.force_db_test_env?
 
   desc "Create a migration"
   task :create_migration, [:name] do |_, args|

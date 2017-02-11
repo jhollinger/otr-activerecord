@@ -25,6 +25,11 @@ module OTR
       def migration_base_class_name
         'ActiveRecord::Migration[5.0]'
       end
+
+      # Force RACK_ENV/RAILS_ENV to be 'test' when running any db:test:* tasks
+      def force_db_test_env?
+        false
+      end
     end
   end
 end
