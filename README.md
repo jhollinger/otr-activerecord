@@ -3,7 +3,7 @@
 An easy way to use ActiveRecord "off the rails." Works with Grape, Sinatra, plain old Rack, or even in a boring little script!. The defaults are all very Railsy (`config/database.yml`, `db/seeds.rb`, `db/migrate`, etc.), but you can easily change them. (Formerly known as `grape-activerecord`.) Supports:
 
 * ActiveRecord 4
-* ActiveRecord 5 (new, possibly buggy; PRs and Issues welcome!)
+* ActiveRecord 5
 
 ## How to use
 
