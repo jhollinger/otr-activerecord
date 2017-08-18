@@ -1,3 +1,6 @@
+### 1.2.2 (2017-08-17)
+* Support ActiveRecord 5.1
+
 ### 1.2.1 (2017-02-11)
 * Bugfix to db:test: Rake tasks for Rails 5
 

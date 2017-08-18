@@ -23,7 +23,8 @@ module OTR
 
       # Basename of migration classes
       def migration_base_class_name
-        'ActiveRecord::Migration[5.0]'
+        version = "5.#{ActiveRecord::VERSION::MINOR}"
+        "ActiveRecord::Migration[#{version}]"
       end
 
       # Force RACK_ENV/RAILS_ENV to be 'test' when running any db:test:* tasks
