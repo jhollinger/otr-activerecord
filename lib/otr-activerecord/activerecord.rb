@@ -20,7 +20,7 @@ module OTR
     # Connect to database with a Hash. Example:
     # {adapter: 'postgresql', host: 'localhost', database: 'db', username: 'user', password: 'pass', encoding: 'utf8', pool: 10, timeout: 5000}
     def self.configure_from_hash!(spec)
-      ::ActiveRecord::Base.configurations = {rack_env => spec}.stringify_keys
+      ::ActiveRecord::Base.configurations = {rack_env.to_s => spec.stringify_keys}
       ::ActiveRecord::Base.establish_connection(rack_env)
     end
 
@@ -38,7 +38,7 @@ module OTR
 
     # The current Rack environment
     def self.rack_env
-      (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['OTR_ENV'] || 'development').to_sym
+      (ENV['APP_ENV'] || ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['OTR_ENV'] || 'development').to_sym
     end
   end
 end
