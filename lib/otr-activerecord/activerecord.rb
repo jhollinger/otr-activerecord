@@ -38,7 +38,7 @@ module OTR
 
     # The current Rack environment
     def self.rack_env
-      (ENV['APP_ENV'] || ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['OTR_ENV'] || 'development').to_sym
+      (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['APP_ENV'] || ENV['OTR_ENV'] || 'development').to_sym
     end
   end
 end
