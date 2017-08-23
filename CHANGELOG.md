@@ -1,3 +1,6 @@
+### 1.2.4 (2017-08-23)
+* Bugfix to db:create_migration
+
 ### 1.2.3 (2017-08-17)
 * Bugfix to OTR::ActiveRecord.configure_from_hash! for ActiveRecord 5.1
 * Look for APP_ENV if RAILS_ENV and RACK_ENV aren't set
