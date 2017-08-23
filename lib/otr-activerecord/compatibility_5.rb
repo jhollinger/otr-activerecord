@@ -23,7 +23,7 @@ module OTR
 
       # Basename of migration classes
       def migration_base_class_name
-        version = "5.#{ActiveRecord::VERSION::MINOR}"
+        version = "5.#{::ActiveRecord::VERSION::MINOR}"
         "ActiveRecord::Migration[#{version}]"
       end
 
