@@ -4,6 +4,9 @@ require 'erb'
 module OTR
   # ActiveRecord configuration module
   module ActiveRecord
+    autoload :Compatibility4, 'otr-activerecord/compatibility_4'
+    autoload :Compatibility5, 'otr-activerecord/compatibility_5'
+
     class << self
       # Relative path to the "db" dir
       attr_accessor :db_dir
@@ -20,7 +23,8 @@ module OTR
     # Connect to database with a Hash. Example:
     # {adapter: 'postgresql', host: 'localhost', database: 'db', username: 'user', password: 'pass', encoding: 'utf8', pool: 10, timeout: 5000}
     def self.configure_from_hash!(spec)
-      ::ActiveRecord::Base.configurations = {rack_env.to_s => spec.stringify_keys}
+      config = spec.stringify_keys.merge("migrations_paths" => ::OTR::ActiveRecord.migrations_paths)
+      ::ActiveRecord::Base.configurations = {rack_env.to_s => config}
       ::ActiveRecord::Base.establish_connection(rack_env)
     end
 
@@ -32,7 +36,12 @@ module OTR
     # Connect to database with a yml file. Example: "config/database.yml"
     def self.configure_from_file!(path)
       raise "#{path} does not exist!" unless File.file? path
-      ::ActiveRecord::Base.configurations = YAML.load(ERB.new(File.read(path)).result) || {}
+      ::ActiveRecord::Base.configurations =
+        (YAML.load(ERB.new(File.read(path)).result) || {}).
+        reduce({}) { |a, (env, config)|
+          a[env] = {"migrations_paths" => ::OTR::ActiveRecord.migrations_paths}.merge config
+          a
+        }
       ::ActiveRecord::Base.establish_connection(rack_env)
     end
 
