@@ -1,3 +1,6 @@
+### 1.2.5 (2018-04-23)
+* Support ActiveRecord 5.2
+
 ### 1.2.4 (2017-08-23)
 * Bugfix to db:create_migration
 
