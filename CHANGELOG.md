@@ -1,3 +1,6 @@
+### 1.2.6 (2018-12-11)
+* Bugfix to default env in development mode w/AR 5.2
+
 ### 1.2.5 (2018-04-23)
 * Support ActiveRecord 5.2
 
