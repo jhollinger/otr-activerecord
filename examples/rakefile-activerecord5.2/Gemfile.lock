@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    otr-activerecord (1.2.5)
+    otr-activerecord (1.2.6)
       activerecord (>= 4.0, < 5.3)
       hashie-forbidden_attributes (~> 0.1)
 
