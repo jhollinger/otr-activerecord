@@ -1,5 +1,5 @@
 ### 1.2.7 (2019-01-11)
-* A less hacky way of fixing the bug fixed in 1.2.6.
+* A less hacky way of fixing the bug fixed in 1.2.6. `ENV["RACK_ENV"]`/`ENV["RAILS_ENV"]` will no longer be forced into `development` when blank.
 
 ### 1.2.6 (2018-12-11)
 * Bugfix to default env in development mode w/AR 5.2
