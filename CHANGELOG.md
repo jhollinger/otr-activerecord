@@ -1,3 +1,6 @@
+### 1.2.7 (2019-01-11)
+* A less hacky way of fixing the bug fixed in 1.2.6.
+
 ### 1.2.6 (2018-12-11)
 * Bugfix to default env in development mode w/AR 5.2
 
