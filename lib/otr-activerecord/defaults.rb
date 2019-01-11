@@ -1,5 +1,4 @@
-ENV['RACK_ENV'] ||= OTR::ActiveRecord.rack_env.to_s
-ENV['RAILS_ENV'] ||= OTR::ActiveRecord.rack_env.to_s
+ENV["DISABLE_DATABASE_ENVIRONMENT_CHECK"] ||= "true"
 
 OTR::ActiveRecord.db_dir = 'db'
 OTR::ActiveRecord.migrations_paths = %w(db/migrate)
