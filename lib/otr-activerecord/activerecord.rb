@@ -6,6 +6,7 @@ module OTR
   module ActiveRecord
     autoload :Compatibility4, 'otr-activerecord/compatibility_4'
     autoload :Compatibility5, 'otr-activerecord/compatibility_5'
+    autoload :Compatibility6, 'otr-activerecord/compatibility_6'
 
     class << self
       # Relative path to the "db" dir

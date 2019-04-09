@@ -7,4 +7,5 @@ OTR::ActiveRecord.seed_file = 'seeds.rb'
 OTR::ActiveRecord._normalizer = case ::ActiveRecord::VERSION::MAJOR
                                 when 4 then OTR::ActiveRecord::Compatibility4.new
                                 when 5 then OTR::ActiveRecord::Compatibility5.new
+                                when 6 then OTR::ActiveRecord::Compatibility6.new
                                 end
