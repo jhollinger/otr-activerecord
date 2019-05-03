@@ -4,7 +4,7 @@ An easy way to use ActiveRecord "off the rails." Works with Grape, Sinatra, plai
 
 * ActiveRecord 4
 * ActiveRecord 5
-* ActiveRecord 6 (experimental)
+* ActiveRecord 6
 
 ## How to use
 
