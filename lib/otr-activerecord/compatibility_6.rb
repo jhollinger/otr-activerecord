@@ -34,10 +34,3 @@ module OTR
     end
   end
 end
-
-# https://github.com/rails/rails/issues/35902
-module ActiveRecord::Tasks::DatabaseTasks
-  def for_each
-    return
-  end
-end
