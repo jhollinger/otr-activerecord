@@ -23,11 +23,15 @@ After loading your gems, tell `OTR::ActiveRecord` about your database config usi
 **Important note**: `configure_from_file!` won't work as expected if you have already `DATABASE_URL` set as part of your environment variables.
 This is because in ActiveRecord when that env variable is set it will merge its properties into the current connection configuration.
 
-#### 3. Enable ActiveRecord connection management in Rack apps
+#### 3. Enable middleware for Rack apps
 
-This middleware cleans up your database connections after each request. Add it to your `config.ru` file:
+Add these middlewares in `config.ru`:
 
+    # Clean up database connections after every request (required)
     use OTR::ActiveRecord::ConnectionManagement
+
+    # Enable ActiveRecord's QueryCache for every request (optional)
+    use OTR::ActiveRecord::QueryCache
 
 #### 4. Import ActiveRecord tasks into your Rakefile
 
