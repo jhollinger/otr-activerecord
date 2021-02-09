@@ -19,19 +19,21 @@ RSpec.describe OTR::ActiveRecord do
       end
     end
 
-    context 'when configuration file with multiple roles given' do
-      let(:config) { fixture('configuration/multi.yml') }
+    if ActiveRecord.version >= ::Gem::Version.new('6.0')
+      context 'when configuration file with multiple roles given' do
+        let(:config) { fixture('configuration/multi.yml') }
 
-      it 'configures active record' do
-        pending 'Multi db configuration does not work yet'
-        described_class.configure_from_file!(config)
+        it 'configures active record' do
+          described_class.configure_from_file!(config)
 
-        expect(::ActiveRecord::Base.configurations['test']).to eq({
-          'adapter' => 'sqlite3',
-          'database' => 'tmp/simple.sqlite3',
-          'migrations_paths' => ['db/migrate']
-        })
+          expect(::ActiveRecord::Base.configurations['test']).to eq({
+            'adapter' => 'sqlite3',
+            'database' => 'tmp/multi.sqlite3',
+            'migrations_paths' => ['db/migrate']
+          })
+        end
       end
+
     end
   end
 end
