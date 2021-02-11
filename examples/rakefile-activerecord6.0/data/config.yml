@@ -1,20 +1,20 @@
 development:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: utf8
-  database: otr_example_60_dev
+  database: data/otr_example_60_dev.sqlite3
   pool: 5
   timeout: 5000
 
 test:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: utf8
-  database: otr_example_60_test
+  database: data/otr_example_60_test.sqlite3
   pool: 5
   timeout: 5000
 
 production:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: utf8
-  database: otr_example_60_prod
+  database: data/otr_example_60_prod.sqlite3
   pool: 5
   timeout: 5000
