@@ -8,22 +8,21 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (5.2.4.4)
-      activesupport (= 5.2.4.4)
-    activerecord (5.2.4.4)
-      activemodel (= 5.2.4.4)
-      activesupport (= 5.2.4.4)
-      arel (>= 9.0)
-    activesupport (5.2.4.4)
+    activemodel (6.1.2)
+      activesupport (= 6.1.2)
+    activerecord (6.1.2)
+      activemodel (= 6.1.2)
+      activesupport (= 6.1.2)
+    activesupport (6.1.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     appraisal (2.3.0)
       bundler
       rake
       thor (>= 0.14.0)
-    arel (9.0.0)
     ast (2.4.2)
     concurrent-ruby (1.1.8)
     diff-lcs (1.4.4)
@@ -71,16 +70,16 @@ GEM
     simplecov-html (0.10.2)
     sqlite3 (1.4.2)
     thor (1.1.0)
-    thread_safe (0.3.6)
-    tzinfo (1.2.9)
-      thread_safe (~> 0.1)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
+    zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
-  activerecord (~> 5.2.0)
+  activerecord (~> 6.1.0)
   appraisal
   otr-activerecord!
   parallel (< 1.20)
