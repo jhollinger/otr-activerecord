@@ -1,3 +1,6 @@
+### 1.4.2 (2021-04-03)
+* Allow AR 6.1
+
 ### 1.4.0 (2019-06-05)
 * Add `OTR::ActiveRecord::QueryCache` middleware.
 
