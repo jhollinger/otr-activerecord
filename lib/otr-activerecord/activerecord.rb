@@ -37,13 +37,23 @@ module OTR
     # Connect to database with a yml file. Example: "config/database.yml"
     def self.configure_from_file!(path)
       raise "#{path} does not exist!" unless File.file? path
-      ::ActiveRecord::Base.configurations =
-        (YAML.load(ERB.new(File.read(path)).result) || {}).
-        reduce({}) { |a, (env, config)|
-          a[env] = {"migrations_paths" => ::OTR::ActiveRecord.migrations_paths}.merge config
-          a
-        }
+
+      result = (YAML.safe_load(ERB.new(File.read(path)).result, [], [], true) || {})
+      ::ActiveRecord::Base.configurations = begin
+        result.each do |_env, config|
+          if config.all? { |_, v| v.is_a?(Hash) }
+            config.each { |_, v| append_migration_path(v) }
+          else
+            append_migration_path(config)
+          end
+        end
+      end
       ::ActiveRecord::Base.establish_connection(rack_env)
+    end
+
+    def self.append_migration_path(config)
+      config['migrations_paths'] = ::OTR::ActiveRecord.migrations_paths unless config.key?('migrations_paths')
+      config
     end
 
     # The current Rack environment

@@ -1,0 +1,12 @@
+.defaults: &defaults
+  adapter: sqlite3
+  database: tmp/simple.sqlite3
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults
