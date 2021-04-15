@@ -8,7 +8,6 @@ module OTR
       def initialize
         @major_version = 5
         ::ActiveRecord::Base.default_timezone = :utc
-        ::ActiveRecord::Base.logger = Logger.new(STDOUT)
       end
 
       # All db migration dir paths
