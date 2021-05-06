@@ -26,7 +26,6 @@ module OTR
     def self.configure_from_hash!(spec)
       config = spec.stringify_keys.merge("migrations_paths" => ::OTR::ActiveRecord.migrations_paths)
       ::ActiveRecord::Base.configurations = {rack_env.to_s => config}
-      ::ActiveRecord::Base.establish_connection(rack_env)
     end
 
     # Connect to database with a DB URL. Example: "postgres://user:pass@localhost/db"
@@ -40,10 +39,20 @@ module OTR
       ::ActiveRecord::Base.configurations =
         (YAML.load(ERB.new(File.read(path)).result) || {}).
         reduce({}) { |a, (env, config)|
-          a[env] = {"migrations_paths" => ::OTR::ActiveRecord.migrations_paths}.merge config
+          if config.has_key? "database"
+            a[env] = {"migrations_paths" => ::OTR::ActiveRecord.migrations_paths}.merge config
+          elsif env == rack_env.to_s
+            config.each do |dbname, subconfig|
+              a[dbname.to_sym] = {"migrations_paths" => ::OTR::ActiveRecord.migrations_paths}.merge subconfig
+            end
+          end
           a
         }
-      ::ActiveRecord::Base.establish_connection(rack_env)
+    end
+
+    # Establish a connection to the given db (defaults to current rack env)
+    def self.establish_connection!(db = rack_env)
+      ::ActiveRecord::Base.establish_connection(db)
     end
 
     # The current Rack environment
