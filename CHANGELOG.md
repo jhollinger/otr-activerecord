@@ -1,3 +1,7 @@
+### 2.0.0 (2021-05-06)
+* Parse three-tier database.yml
+* Require manually calling OTR::ActiveRecord::establish_connection!
+
 ### 1.4.2 (2021-04-03)
 * Allow AR 6.1
 
