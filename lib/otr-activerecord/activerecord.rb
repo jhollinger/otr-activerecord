@@ -30,7 +30,28 @@ module OTR
 
     # Connect to database with a DB URL. Example: "postgres://user:pass@localhost/db"
     def self.configure_from_url!(url)
-      configure_from_hash! ::ActiveRecord::ConnectionAdapters::ConnectionSpecification::ConnectionUrlResolver.new(url).to_hash
+      require 'uri'
+      uri = URI(url)
+      spec = {"adapter" => uri.scheme}
+
+      case spec["adapter"]
+      when /^sqlite/i
+        spec["database"] = url =~ /::memory:/ ? ":memory:" : "#{uri.host}#{uri.path}"
+      else
+        spec["host"] = uri.host if uri.host
+        spec["port"] = uri.port if uri.port
+        spec["database"] = uri.path.sub(/^\//, "")
+        spec["username"] = uri.user if uri.user
+        spec["password"] = uri.password if uri.password
+      end
+
+      if uri.query
+        opts_ary = URI.decode_www_form(uri.query)
+        opts = Hash[opts_ary]
+        spec.merge!(opts)
+      end
+
+      configure_from_hash! spec
     end
 
     # Connect to database with a yml file. Example: "config/database.yml"
