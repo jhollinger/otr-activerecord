@@ -48,7 +48,7 @@ GEM
     otr-activerecord (1.2.1)
       activerecord (>= 4.0, < 5.1)
       hashie-forbidden_attributes (~> 0.1)
-    rack (1.6.4)
+    rack (2.1.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-test (0.6.3)
@@ -75,7 +75,7 @@ DEPENDENCIES
   grape (~> 1.2.2)
   grape-entity (~> 0.5.1)
   otr-activerecord (~> 1.2.1)
-  rack (~> 1.6.0)
+  rack (~> 2.1.4)
   rack-test
   rake
   shotgun
