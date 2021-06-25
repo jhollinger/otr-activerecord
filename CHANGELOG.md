@@ -1,3 +1,6 @@
+### 2.0.1 (2021-06-24)
+* Fix configure_from_url! for AR 6.1
+
 ### 2.0.0 (2021-05-06)
 * Parse three-tier database.yml
 * Require manually calling OTR::ActiveRecord::establish_connection!
