@@ -1,0 +1,24 @@
+.defaults: &defaults
+  adapter: sqlite3
+  database: tmp/multi.sqlite3
+
+development:
+  primary:
+    <<: *defaults
+  reading:
+    <<: *defaults
+    replica: true
+
+production:
+  primary:
+    <<: *defaults
+  reading:
+    <<: *defaults
+    replica: true
+
+test:
+  primary:
+    <<: *defaults
+  reading:
+    <<: *defaults
+    replica: true
