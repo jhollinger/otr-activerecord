@@ -1,3 +1,6 @@
+### 2.0.2 (2021-09-14)
+* Fix `configure_from_file!` for flat files (Brynbayliss87)
+
 ### 2.0.1 (2021-06-24)
 * Fix configure_from_url! for AR 6.1
 
