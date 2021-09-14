@@ -3,6 +3,7 @@ $:.unshift Config.root.join('lib')
 
 # Connect to database
 OTR::ActiveRecord.configure_from_file! Config.root.join('config', 'database.yml')
+OTR::ActiveRecord.establish_connection!
 
 # Load application
 [
