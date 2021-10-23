@@ -1,0 +1,20 @@
+development:
+  adapter: sqlite3
+  encoding: utf8
+  database: data/otr_example_70_dev.sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  encoding: utf8
+  database: data/otr_example_70_test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: sqlite3
+  encoding: utf8
+  database: data/otr_example_70_prod.sqlite3
+  pool: 5
+  timeout: 5000

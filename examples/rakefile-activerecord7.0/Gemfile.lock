@@ -1,0 +1,43 @@
+PATH
+  remote: ../..
+  specs:
+    otr-activerecord (2.0.2)
+      activerecord (>= 4.0, < 7.1)
+      hashie-forbidden_attributes (~> 0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (7.0.0.alpha2)
+      activesupport (= 7.0.0.alpha2)
+    activerecord (7.0.0.alpha2)
+      activemodel (= 7.0.0.alpha2)
+      activesupport (= 7.0.0.alpha2)
+    activesupport (7.0.0.alpha2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    concurrent-ruby (1.1.9)
+    hashie (4.1.0)
+    hashie-forbidden_attributes (0.1.1)
+      hashie (>= 3.0)
+    i18n (1.8.10)
+      concurrent-ruby (~> 1.0)
+    minitest (5.14.4)
+    rake (13.0.6)
+    sqlite3 (1.4.2)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activerecord (= 7.0.0.alpha2)
+  otr-activerecord!
+  rake
+  sqlite3
+
+BUNDLED WITH
+   2.1.4
