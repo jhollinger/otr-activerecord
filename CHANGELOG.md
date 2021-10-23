@@ -1,3 +1,6 @@
+### 2.0.3 (2021-10-22)
+* Preliminary support for ActiveRecord 7 (tested against 7.0.0.alpha2)
+
 ### 2.0.2 (2021-09-14)
 * Fix `configure_from_file!` for flat files (Brynbayliss87)
 
