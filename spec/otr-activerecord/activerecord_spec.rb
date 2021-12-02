@@ -5,12 +5,10 @@ RSpec.describe OTR::ActiveRecord do
 
       it 'configures active record' do
         described_class.configure_from_file!(config)
-
-        expect(::ActiveRecord::Base.configurations['test']).to eq(
-          adapter: 'sqlite3',
-          database: 'tmp/simple.sqlite3',
-          migrations_paths: ['db/migrate']
-        )
+        t = ::ActiveRecord::Base.configurations['test'].with_indifferent_access
+        expect(t[:adapter]).to eq 'sqlite3'
+        expect(t[:database]).to eq 'tmp/simple.sqlite3'
+        expect(t[:migrations_paths]).to eq ['db/migrate']
       end
     end
 
@@ -19,12 +17,10 @@ RSpec.describe OTR::ActiveRecord do
 
       it 'configures active record' do
         described_class.configure_from_file!(config)
-
-        expect(::ActiveRecord::Base.configurations['test']).to eq(
-          adapter: 'sqlite3',
-          database: 'tmp/multi.sqlite3',
-          migrations_paths: ['db/migrate']
-        )
+        t = ::ActiveRecord::Base.configurations['test'].with_indifferent_access
+        expect(t[:adapter]).to eq 'sqlite3'
+        expect(t[:database]).to eq 'tmp/multi.sqlite3'
+        expect(t[:migrations_paths]).to eq ['db/migrate']
       end
     end
   end
