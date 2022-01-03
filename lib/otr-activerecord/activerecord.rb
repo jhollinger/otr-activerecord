@@ -58,7 +58,7 @@ module OTR
     # Connect to database with a yml file. Example: "config/database.yml"
     def self.configure_from_file!(path)
       raise "#{path} does not exist!" unless File.file? path
-        result =(YAML.safe_load(ERB.new(File.read(path)).result, [], [], true) || {})
+        result =(YAML.safe_load(ERB.new(File.read(path)).result, aliases: true) || {})
         ::ActiveRecord::Base.configurations = begin
         result.each do |_env, config|
           if config.all? { |_, v| v.is_a?(Hash) }
