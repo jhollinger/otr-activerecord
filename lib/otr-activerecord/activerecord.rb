@@ -58,7 +58,7 @@ module OTR
     # Connect to database with a yml file. Example: "config/database.yml"
     def self.configure_from_file!(path)
       raise "#{path} does not exist!" unless File.file? path
-        result =(YAML.safe_load(ERB.new(File.read(path)).result, [], [], true) || {})
+        result = load_yaml(path)
         ::ActiveRecord::Base.configurations = begin
         result.each do |_env, config|
           if config.all? { |_, v| v.is_a?(Hash) }
@@ -84,5 +84,20 @@ module OTR
     def self.rack_env
       (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['APP_ENV'] || ENV['OTR_ENV'] || 'development').to_sym
     end
+
+    # Support old Psych versions
+    def self.load_yaml(path)
+      erb_result = ERB.new(File.read(path)).result
+
+      result = if Gem::Version.new(Psych::VERSION) >= Gem::Version.new('3.1.0.pre1')
+        YAML.safe_load(erb_result, aliases: true)
+      else
+        YAML.safe_load(erb_result, [], [], true)
+      end
+
+      result || {}
+    end
+
+    private_class_method :load_yaml
   end
 end
