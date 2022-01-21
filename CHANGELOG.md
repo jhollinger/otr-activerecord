@@ -1,3 +1,6 @@
+### 2.0.4 (2022-01-20)
+* Fix YAML loading on Ruby 3.1 - [PR #39](https://github.com/jhollinger/otr-activerecord/pull/39) - [scudelletti](https://github.com/scudelletti)
+
 ### 2.0.3 (2021-10-22)
 * Preliminary support for ActiveRecord 7 (tested against 7.0.0.alpha2)
 
