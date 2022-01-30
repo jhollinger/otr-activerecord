@@ -2,10 +2,10 @@
 
 An easy way to use ActiveRecord "off the rails." Works with Grape, Sinatra, plain old Rack, or even in a boring little script!. The defaults are all very Railsy (`config/database.yml`, `db/seeds.rb`, `db/migrate`, etc.), but you can easily change them. (Formerly known as `grape-activerecord`.) Supports:
 
-* ActiveRecord 7.0.0.alpha2 (new AR features, like encryption, not tested)
-* ActiveRecord 6
-* ActiveRecord 5
-* ActiveRecord 4
+* ActiveRecord 7.0 (new AR features, like encryption, not tested)
+* ActiveRecord 6.x
+* ActiveRecord 5.x
+* ActiveRecord 4.2
 
 ## How to use
 
