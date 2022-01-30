@@ -1,3 +1,6 @@
+### 2.1.0 (2022-01-30)
+* Don't set logger - allows apps to do that - [PR #28](https://github.com/jhollinger/otr-activerecord/pull/28) - [anakinj](https://github.com/anakinj)
+
 ### 2.0.4 (2022-01-20)
 * Fix YAML loading on Ruby 3.1 - [PR #39](https://github.com/jhollinger/otr-activerecord/pull/39) - [scudelletti](https://github.com/scudelletti)
 
