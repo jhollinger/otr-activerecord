@@ -5,7 +5,6 @@ module OTR
       def initialize
         @major_version = 7
         ::ActiveRecord.default_timezone = :utc
-        ::ActiveRecord::Base.logger = Logger.new(STDOUT)
       end
     end
   end
