@@ -7,7 +7,7 @@ module OTR
       def initialize(app)
         @handler = case ::ActiveRecord::VERSION::MAJOR
                    when 4 then ::ActiveRecord::QueryCache.new(app)
-                   when 5, 6 then ActionDispatchHandler.new(app)
+                   when 5, 6, 7 then ActionDispatchHandler.new(app)
                    end
       end
 
