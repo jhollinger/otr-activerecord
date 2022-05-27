@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rack', '~> 1.6.0'
+gem 'rack', '~> 2.1.4'
 gem 'grape', '~> 1.2.2'
 gem 'grape-entity', '~> 0.5.1'
 gem 'activerecord', '~> 5.0.2', require: 'active_record'
