@@ -60,7 +60,7 @@ namespace :db do
     name, version = args[:name], Time.now.utc.strftime("%Y%m%d%H%M%S")
 
     OTR::ActiveRecord._normalizer.migrations_paths.each do |directory|
-      next unless File.exists?(directory)
+      next unless File.exist?(directory)
       migration_files = Pathname(directory).children
       if duplicate = migration_files.find { |path| path.basename.to_s.include?(name) }
         abort "Another migration is already named \"#{name}\": #{duplicate}."
