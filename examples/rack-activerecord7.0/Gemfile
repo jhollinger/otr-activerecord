@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rack', '~> 2.2'
-gem 'activerecord', '~> 7.0.1', require: 'active_record'
+gem 'activerecord', '~> 7.0.4', require: 'active_record'
 gem 'otr-activerecord', path: '../../'
 gem 'sqlite3'
 gem 'rake'
