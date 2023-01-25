@@ -1,3 +1,6 @@
+### Unreleased
+* Use File.exist? instead of File.exists?
+
 ### 2.1.1 (2022-01-30)
 * Fix `OTR::ActiveRecord::QueryCache` for ActiveRecord 7.
 
