@@ -8,33 +8,33 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.1)
-      activesupport (= 7.0.1)
-    activerecord (7.0.1)
-      activemodel (= 7.0.1)
-      activesupport (= 7.0.1)
-    activesupport (7.0.1)
+    activemodel (7.0.4.2)
+      activesupport (= 7.0.4.2)
+    activerecord (7.0.4.2)
+      activemodel (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
+    activesupport (7.0.4.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.2.0)
     hashie (5.0.0)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
-    i18n (1.8.11)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    minitest (5.15.0)
+    minitest (5.17.0)
     rake (13.0.6)
     sqlite3 (1.4.2)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (= 7.0.1)
+  activerecord (= 7.0.4.2)
   otr-activerecord!
   rake
   sqlite3
