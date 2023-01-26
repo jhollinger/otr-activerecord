@@ -1,4 +1,4 @@
-### Unreleased
+### 2.1.2 (2023-01-25)
 * Use File.exist? instead of File.exists?
 
 ### 2.1.1 (2022-01-30)
