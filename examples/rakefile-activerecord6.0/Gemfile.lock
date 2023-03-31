@@ -2,43 +2,40 @@ PATH
   remote: ../..
   specs:
     otr-activerecord (2.0.1)
-      activerecord (>= 4.0, < 6.3)
+      activerecord (>= 4.0, < 7.1)
       hashie-forbidden_attributes (~> 0.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.0.3.5)
-      activesupport (= 6.0.3.5)
-    activerecord (6.0.3.5)
-      activemodel (= 6.0.3.5)
-      activesupport (= 6.0.3.5)
-    activesupport (6.0.3.5)
+    activemodel (7.0.4.3)
+      activesupport (= 7.0.4.3)
+    activerecord (7.0.4.3)
+      activemodel (= 7.0.4.3)
+      activesupport (= 7.0.4.3)
+    activesupport (7.0.4.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-      zeitwerk (~> 2.2, >= 2.2.2)
-    concurrent-ruby (1.1.8)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    concurrent-ruby (1.2.2)
     hashie (4.1.0)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
-    i18n (1.8.8)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    minitest (5.14.3)
+    minitest (5.18.0)
     rake (12.3.2)
     sqlite3 (1.4.2)
-    thread_safe (0.3.6)
-    tzinfo (1.2.9)
-      thread_safe (~> 0.1)
-    zeitwerk (2.4.2)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
 
 PLATFORMS
   ruby
   universal-darwin-20
 
 DEPENDENCIES
-  activerecord (~> 6.0.0)
+  activerecord (~> 7.0.4)
   otr-activerecord!
   rake
   sqlite3
