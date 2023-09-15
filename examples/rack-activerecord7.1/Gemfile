@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'rack', '~> 2.2'
+gem 'puma', '~> 5.6'
+gem 'activerecord', '7.1.0.beta1', require: 'active_record'
+gem 'otr-activerecord', path: '../../'
+gem 'sqlite3'
+gem 'rake'
+
+group :development do
+  gem 'shotgun'
+end

@@ -19,6 +19,6 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.1.0'
 
-  gem.add_runtime_dependency 'activerecord', ['>= 4.0', '< 7.1']
+  gem.add_runtime_dependency 'activerecord', ['>= 4.0', '< 7.2']
   gem.add_runtime_dependency 'hashie-forbidden_attributes', '~> 0.1'
 end
