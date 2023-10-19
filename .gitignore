@@ -1,4 +1,4 @@
 /*.gem
 /Gemfile.lock
-/examples/**/*.sqlite3
+/examples/**/*.sqlite3*
 .DS_Store
