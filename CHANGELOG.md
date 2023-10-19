@@ -1,3 +1,6 @@
+### 2.2.0 (2023-10-19)
+* Support for ActiveRecord 7.1
+
 ### 2.1.2 (2023-01-25)
 * Use File.exist? instead of File.exists?
 
