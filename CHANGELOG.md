@@ -1,3 +1,6 @@
+### Unreleased
+* Use ActiveRecord::Base.connection_handler.clear_active_connections! instead of ActiveRecord::Base.clear_active_connections!
+
 ### 2.2.0 (2023-10-19)
 * Support for ActiveRecord 7.1
 
