@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# Use: bin/run service cmd [arg1...]
+#
+
+set -euo pipefail
+
+cd $(dirname $0)/../
+source bin/lib.sh
+
+service=$1
+shift
+
+
+podpose build $service
+podpose up --no-start $service
+podpose run --rm $service "$@"

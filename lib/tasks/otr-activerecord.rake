@@ -53,13 +53,13 @@ namespace :db do
     task :environment do
       ENV['RACK_ENV'] = 'test'
     end
-  end if OTR::ActiveRecord._normalizer.force_db_test_env?
+  end if OTR::ActiveRecord.shim.force_db_test_env?
 
   desc "Create a migration"
   task :create_migration, [:name] do |_, args|
     name, version = args[:name], Time.now.utc.strftime("%Y%m%d%H%M%S")
 
-    OTR::ActiveRecord._normalizer.migrations_paths.each do |directory|
+    OTR::ActiveRecord.shim.migrations_paths.each do |directory|
       next unless File.exist?(directory)
 
       migration_files = Pathname(directory).children
@@ -69,12 +69,12 @@ namespace :db do
     end
 
     filename = "#{version}_#{name}.rb"
-    dirname = OTR::ActiveRecord._normalizer.migrations_path
+    dirname = OTR::ActiveRecord.shim.migrations_path
     path = File.join(dirname, filename)
 
     FileUtils.mkdir_p(dirname)
     File.write path, <<-MIGRATION.strip_heredoc
-      class #{name.camelize} < #{OTR::ActiveRecord._normalizer.migration_base_class_name}
+      class #{name.camelize} < #{OTR::ActiveRecord.shim.migration_base_class_name}
         def change
         end
       end

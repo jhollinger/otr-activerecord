@@ -1,3 +1,8 @@
+### 2.3.0 (?)
+* Support for ActiveRecord 7.2
+* Support for multi-db config in `OTR::ActiveRecord.configure_from_hash!`
+* Removal of support for ActiveRecord 4.x-6.0
+
 ### 2.2.0 (2023-10-19)
 * Support for ActiveRecord 7.1
 

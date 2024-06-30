@@ -1,13 +1,9 @@
 module OTR
   module ActiveRecord
-    # Compatibility layer for ActiveRecord 5
-    class Compatibility5
-      attr_reader :major_version
-
-      # Compatibility layer for ActiveRecord 5
+    # Compatibility layer for ActiveRecord 7
+    class Shim
       def initialize
-        @major_version = 5
-        ::ActiveRecord::Base.default_timezone = :utc
+        ::ActiveRecord.default_timezone = :utc
       end
 
       # All db migration dir paths
@@ -22,7 +18,7 @@ module OTR
 
       # Basename of migration classes
       def migration_base_class_name
-        version = "5.#{::ActiveRecord::VERSION::MINOR}"
+        version = "7.#{::ActiveRecord::VERSION::MINOR}"
         "ActiveRecord::Migration[#{version}]"
       end
 

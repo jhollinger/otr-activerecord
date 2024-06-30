@@ -1,0 +1,39 @@
+---
+services:
+  ruby-3.3:
+    build:
+      context: ./
+      dockerfile: ./compose/Dockerfile.ruby-3.3
+    volumes:
+      - ./:/srv
+      - ruby-3.3-gems:/usr/local/bundle
+
+  ruby-3.2:
+    build:
+      context: ./
+      dockerfile: ./compose/Dockerfile.ruby-3.2
+    volumes:
+      - ./:/srv
+      - ruby-3.2-gems:/usr/local/bundle
+
+  ruby-3.1:
+    build:
+      context: ./
+      dockerfile: ./compose/Dockerfile.ruby-3.1
+    volumes:
+      - ./:/srv
+      - ruby-3.1-gems:/usr/local/bundle
+
+  ruby-3.0:
+    build:
+      context: ./
+      dockerfile: ./compose/Dockerfile.ruby-3.0
+    volumes:
+      - ./:/srv
+      - ruby-3.0-gems:/usr/local/bundle
+
+volumes:
+  ruby-3.3-gems:
+  ruby-3.2-gems:
+  ruby-3.1-gems:
+  ruby-3.0-gems:

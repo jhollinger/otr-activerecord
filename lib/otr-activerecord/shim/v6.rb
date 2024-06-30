@@ -1,12 +1,8 @@
 module OTR
   module ActiveRecord
-    # Compatibility layer for ActiveRecord 4
-    class Compatibility4
-      attr_reader :major_version
-
-      # Compatibility layer for ActiveRecord 4
+    # Compatibility layer for ActiveRecord 6
+    class Shim
       def initialize
-        @major_version = 4
         ::ActiveRecord::Base.default_timezone = :utc
       end
 
@@ -22,12 +18,13 @@ module OTR
 
       # Basename of migration classes
       def migration_base_class_name
-        'ActiveRecord::Migration'
+        version = "6.#{::ActiveRecord::VERSION::MINOR}"
+        "ActiveRecord::Migration[#{version}]"
       end
 
       # Force RACK_ENV/RAILS_ENV to be 'test' when running any db:test:* tasks
       def force_db_test_env?
-        true
+        false
       end
     end
   end

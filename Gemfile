@@ -1,8 +1,12 @@
-
 source 'https://rubygems.org'
 
 gemspec
 
-gem 'activerecord', '>6.0'
-gem 'rspec'
-gem 'sqlite3'
+gem 'rake'
+gem 'appraisal', '~> 2.5'
+
+group :test do
+  gem 'minitest'
+end
+
+gem "rack", "~> 3.1"

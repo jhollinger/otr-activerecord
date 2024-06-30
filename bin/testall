@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+#
+# Run every combination:
+#   bin/testall
+#
+# Run just the matching combinations:
+#   bin/testall ruby-3.0
+#
+
+set -euo pipefail
+
+cd $(dirname $0)/../
+source bin/lib.sh
+
+[[ $# -gt 0 ]] && filter=("$@") || filter=()
+
+# flatten matrix
+matrix=()
+while read ruby ar dbs; do
+  for db in $dbs; do
+    matrix+=("$ruby $ar $db")
+  done
+done < <(awk '/^ *[^#]/' test/matrix)
+
+# run each row in the matrix
+for row in "${matrix[@]}"; do
+  read ruby ar db <<< "$row"
+  if [[ ${#filter[@]} -eq 0 ]] || array_in_array ${#filter[@]} ${filter[@]} $ruby $ar $db; then
+    cmd="bin/test  $ruby  $ar  $db"
+    announce "$cmd"
+    sleep 1
+    $cmd
+  fi
+done
+
+podpose stop
+nyancat

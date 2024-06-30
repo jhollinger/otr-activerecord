@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+if [[ $# -lt 3 ]]; then
+  echo "Use: bin/test ruby-X ar-X sqlite3|postgres-*|mysql-8 [args]"
+  exit 1
+fi
+
+set -euo pipefail
+
+cd $(dirname $0)/../
+
+ruby_version=$1
+ar_version=$2
+db=$3
+shift 3
+
+if [[ $db == sqlite* ]]; then
+  db_url=""
+elif [[ $db == postgres-* ]]; then
+  db_url="postgresql://postgres@${db}:5432/postgres"
+elif [[ $db == mysql-* ]]; then
+  db_url="mysql2://root:@${db}:3306/mysql"
+else
+  echo "Unknown database '${db}'. Options are: sqlite, postgres-*, mysql-*"
+  exit 1
+fi
+
+export TEST_DATABASE_URL="$db_url"
+exec bin/appraise ${ruby_version} ${ar_version} rake test "$@"

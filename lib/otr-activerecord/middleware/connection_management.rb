@@ -13,13 +13,13 @@ module OTR
 
         resp = @app.call env
         resp[2] = ::Rack::BodyProxy.new resp[2] do
-          ::ActiveRecord::Base.clear_active_connections! unless testing
+          ::ActiveRecord::Base.connection_handler.clear_active_connections! unless testing
         end
         resp
 
-      rescue Exception
-        ::ActiveRecord::Base.clear_active_connections! unless testing
-        raise
+      rescue => e
+        ::ActiveRecord::Base.connection_handler.clear_active_connections! unless testing
+        raise e
       end
     end
   end

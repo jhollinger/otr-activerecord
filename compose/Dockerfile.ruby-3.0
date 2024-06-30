@@ -1,0 +1,15 @@
+FROM ruby:3.0-slim-bullseye
+WORKDIR /srv
+
+ENV GEM_HOME /usr/local/bundle
+ENV BUNDLE_PATH="$GEM_HOME" \
+  BUNDLE_APP_CONFIG="$GEM_HOME"
+
+RUN \
+  apt-get update -qq && \
+  apt-get install -y --no-install-recommends \
+    build-essential \
+    libsqlite3-dev \
+    git \
+  && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

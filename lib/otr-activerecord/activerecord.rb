@@ -1,13 +1,19 @@
 require 'erb'
+require 'uri'
+require 'yaml'
 
 # "Off the Rails" ActiveRecord configuration/integration for Grape, Sinatra, Rack, and any other kind of app
 module OTR
   # ActiveRecord configuration module
   module ActiveRecord
-    autoload :Compatibility4, 'otr-activerecord/compatibility_4'
-    autoload :Compatibility5, 'otr-activerecord/compatibility_5'
-    autoload :Compatibility6, 'otr-activerecord/compatibility_6'
-    autoload :Compatibility7, 'otr-activerecord/compatibility_7'
+    autoload :ConnectionManagement, 'otr-activerecord/middleware/connection_management'
+    autoload :QueryCache, 'otr-activerecord/middleware/query_cache'
+    autoload :Shim,
+      case ::ActiveRecord::VERSION::MAJOR
+      when 6 then 'otr-activerecord/shim/v6'
+      when 7 then 'otr-activerecord/shim/v7'
+      else raise "Unsupported ActiveRecord version"
+      end
 
     class << self
       # Relative path to the "db" dir
@@ -19,19 +25,17 @@ module OTR
       # Name of the seeds file in db_dir
       attr_accessor :seed_file
       # Internal compatibility layer across different major versions of AR
-      attr_accessor :_normalizer
+      attr_accessor :shim
     end
 
     # Connect to database with a Hash. Example:
     # {adapter: 'postgresql', host: 'localhost', database: 'db', username: 'user', password: 'pass', encoding: 'utf8', pool: 10, timeout: 5000}
     def self.configure_from_hash!(spec)
-      config = spec.stringify_keys.merge("migrations_paths" => ::OTR::ActiveRecord.migrations_paths)
-      ::ActiveRecord::Base.configurations = {rack_env.to_s => config}
+      ::ActiveRecord::Base.configurations = transform_config({rack_env.to_s => spec})
     end
 
     # Connect to database with a DB URL. Example: "postgres://user:pass@localhost/db"
     def self.configure_from_url!(url)
-      require 'uri'
       uri = URI(url)
       spec = {"adapter" => uri.scheme}
 
@@ -57,17 +61,9 @@ module OTR
 
     # Connect to database with a yml file. Example: "config/database.yml"
     def self.configure_from_file!(path)
-      raise "#{path} does not exist!" unless File.file? path
-        result = load_yaml(path)
-        ::ActiveRecord::Base.configurations = begin
-        result.each do |_env, config|
-          if config.all? { |_, v| v.is_a?(Hash) }
-            config.each { |_, v| append_migration_path(v) }
-          else
-            append_migration_path(config)
-          end
-        end
-      end
+      yaml = ERB.new(File.read(path)).result
+      spec = YAML.safe_load(yaml, aliases: true) || {}
+      ::ActiveRecord::Base.configurations = transform_config spec
     end
 
     # Establish a connection to the given db (defaults to current rack env)
@@ -75,29 +71,26 @@ module OTR
       ::ActiveRecord::Base.establish_connection(db)
     end
 
-    def self.append_migration_path(config)
-      config['migrations_paths'] = ::OTR::ActiveRecord.migrations_paths unless config.key?('migrations_paths')
-      config
-    end
-
     # The current Rack environment
     def self.rack_env
       (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || ENV['APP_ENV'] || ENV['OTR_ENV'] || 'development').to_sym
     end
 
-    # Support old Psych versions
-    def self.load_yaml(path)
-      erb_result = ERB.new(File.read(path)).result
-
-      result = if Gem::Version.new(Psych::VERSION) >= Gem::Version.new('3.1.0.pre1')
-        YAML.safe_load(erb_result, aliases: true)
-      else
-        YAML.safe_load(erb_result, [], [], true)
-      end
-
-      result || {}
+    def self.transform_config(spec)
+      fixup = ->(config) {
+        config = config.stringify_keys
+        config["migrations_paths"] ||= migrations_paths
+        config
+      }
+      spec.stringify_keys.transform_values { |config|
+        if config.all? { |_, v| v.is_a? Hash }
+          config.transform_values { |v| fixup.(v) }
+        else
+          fixup.(config)
+        end
+      }
     end
 
-    private_class_method :load_yaml
+    private_class_method :transform_config
   end
 end
