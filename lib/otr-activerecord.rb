@@ -1,5 +1,4 @@
 require 'active_record'
-require 'hashie-forbidden_attributes'
 
 require 'otr-activerecord/version'
 require 'otr-activerecord/activerecord'
