@@ -8,12 +8,7 @@ module OTR
   module ActiveRecord
     autoload :ConnectionManagement, 'otr-activerecord/middleware/connection_management'
     autoload :QueryCache, 'otr-activerecord/middleware/query_cache'
-    autoload :Shim,
-      case ::ActiveRecord::VERSION::MAJOR
-      when 6 then 'otr-activerecord/shim/v6'
-      when 7 then 'otr-activerecord/shim/v7'
-      else raise "Unsupported ActiveRecord version"
-      end
+    autoload :Shim, "otr-activerecord/shim/v#{::ActiveRecord::VERSION::MAJOR}"
 
     class << self
       # Relative path to the "db" dir

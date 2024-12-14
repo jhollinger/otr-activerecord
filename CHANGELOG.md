@@ -1,3 +1,6 @@
+### 2.5.0 (2024-12-13)
+* Support for ActiveRecord 8.0
+
 ### 2.4.0 (2024-08-30)
 * Support for ActiveRecord 7.2
 
