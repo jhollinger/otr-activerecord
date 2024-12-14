@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    otr-activerecord (2.4.0)
+    otr-activerecord (2.5.0)
       activerecord (>= 6.0, < 8.1)
 
 GEM
