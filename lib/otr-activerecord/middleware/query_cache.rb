@@ -10,10 +10,11 @@ module OTR
 
       def call(env)
         state = nil
-        state = ::ActiveRecord::QueryCache.run
+        cache = defined?(::ActiveRecord::QueryCache::ExecutorHooks) ? ::ActiveRecord::QueryCache::ExecutorHooks : ::ActiveRecord::QueryCache
+        state = cache.run
         @app.call(env)
       ensure
-        ::ActiveRecord::QueryCache.complete(state) if state
+        cache.complete(state) if state
       end
     end
   end
