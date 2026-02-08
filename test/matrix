@@ -1,31 +1,31 @@
 #
 # Read by bin/testall to test various combinations of Ruby, ActiveRecord, and datbases
 #
-ruby-4.0  ar_8.1  sqlite3
-ruby-4.0  ar_8.0  sqlite3
-ruby-4.0  ar_7.2  sqlite3
-ruby-4.0  ar_7.1  sqlite3
-ruby-4.0  ar_7.0  sqlite3
+ruby-4.0  ar-8.1  sqlite3
+ruby-4.0  ar-8.0  sqlite3
+ruby-4.0  ar-7.2  sqlite3
+ruby-4.0  ar-7.1  sqlite3
+ruby-4.0  ar-7.0  sqlite3
 
-ruby-3.3  ar_8.1  sqlite3
-ruby-3.3  ar_8.0  sqlite3
-ruby-3.3  ar_7.2  sqlite3
-ruby-3.3  ar_7.1  sqlite3
-ruby-3.3  ar_7.0  sqlite3
-ruby-3.3  ar_6.1  sqlite3
+ruby-3.3  ar-8.1  sqlite3
+ruby-3.3  ar-8.0  sqlite3
+ruby-3.3  ar-7.2  sqlite3
+ruby-3.3  ar-7.1  sqlite3
+ruby-3.3  ar-7.0  sqlite3
+ruby-3.3  ar-6.1  sqlite3
 
-ruby-3.2  ar_8.1  sqlite3
-ruby-3.2  ar_8.0  sqlite3
-ruby-3.2  ar_7.2  sqlite3
-ruby-3.2  ar_7.1  sqlite3
-ruby-3.2  ar_7.0  sqlite3
-ruby-3.2  ar_6.1  sqlite3
+ruby-3.2  ar-8.1  sqlite3
+ruby-3.2  ar-8.0  sqlite3
+ruby-3.2  ar-7.2  sqlite3
+ruby-3.2  ar-7.1  sqlite3
+ruby-3.2  ar-7.0  sqlite3
+ruby-3.2  ar-6.1  sqlite3
 
-ruby-3.1  ar_7.2  sqlite3
-ruby-3.1  ar_7.1  sqlite3
-ruby-3.1  ar_7.0  sqlite3
-ruby-3.1  ar_6.1  sqlite3
+ruby-3.1  ar-7.2  sqlite3
+ruby-3.1  ar-7.1  sqlite3
+ruby-3.1  ar-7.0  sqlite3
+ruby-3.1  ar-6.1  sqlite3
 
-ruby-3.0  ar_7.1  sqlite3
-ruby-3.0  ar_7.0  sqlite3
-ruby-3.0  ar_6.1  sqlite3
+ruby-3.0  ar-7.1  sqlite3
+ruby-3.0  ar-7.0  sqlite3
+ruby-3.0  ar-6.1  sqlite3
