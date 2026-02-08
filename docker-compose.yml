@@ -1,11 +1,23 @@
 ---
 services:
+  ruby-4.0:
+    build:
+      context: ./
+      dockerfile: ./compose/Dockerfile.ruby-4.0
+    volumes:
+      - ./:/srv
+      - ./Appraisals.ruby-4.0:/srv/Appraisals
+      - ruby-4.0-gemfiles:/srv/gemfiles
+      - ruby-4.0-gems:/usr/local/bundle
+
   ruby-3.3:
     build:
       context: ./
       dockerfile: ./compose/Dockerfile.ruby-3.3
     volumes:
       - ./:/srv
+      - ./Appraisals.ruby-3.3:/srv/Appraisals
+      - ruby-3.3-gemfiles:/srv/gemfiles
       - ruby-3.3-gems:/usr/local/bundle
 
   ruby-3.2:
@@ -14,6 +26,8 @@ services:
       dockerfile: ./compose/Dockerfile.ruby-3.2
     volumes:
       - ./:/srv
+      - ./Appraisals.ruby-3.2:/srv/Appraisals
+      - ruby-3.2-gemfiles:/srv/gemfiles
       - ruby-3.2-gems:/usr/local/bundle
 
   ruby-3.1:
@@ -22,6 +36,8 @@ services:
       dockerfile: ./compose/Dockerfile.ruby-3.1
     volumes:
       - ./:/srv
+      - ./Appraisals.ruby-3.1:/srv/Appraisals
+      - ruby-3.1-gemfiles:/srv/gemfiles
       - ruby-3.1-gems:/usr/local/bundle
 
   ruby-3.0:
@@ -30,10 +46,22 @@ services:
       dockerfile: ./compose/Dockerfile.ruby-3.0
     volumes:
       - ./:/srv
+      - ./Appraisals.ruby-3.0:/srv/Appraisals
+      - ruby-3.0-gemfiles:/srv/gemfiles
       - ruby-3.0-gems:/usr/local/bundle
 
 volumes:
+  ruby-4.0-gems:
+  ruby-4.0-gemfiles:
+
   ruby-3.3-gems:
+  ruby-3.3-gemfiles:
+
   ruby-3.2-gems:
+  ruby-3.2-gemfiles:
+
   ruby-3.1-gems:
+  ruby-3.1-gemfiles:
+
   ruby-3.0-gems:
+  ruby-3.0-gemfiles:

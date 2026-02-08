@@ -1,5 +1,7 @@
+/.tool-versions
 /*.gem
 /Gemfile.lock
-/gemfiles/*.gemfile.lock
+/Appraisals
+/gemfiles
 /examples/**/*.sqlite3*
 .DS_Store

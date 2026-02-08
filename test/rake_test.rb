@@ -3,7 +3,7 @@ require 'rake'
 require 'json'
 
 class RakeTest < Minitest::Test
-  def self.test_order; :alpha; end
+  i_suck_and_my_tests_are_order_dependent!
 
   def setup
     Dir.chdir TestApp::DIR if TestApp.exists?
